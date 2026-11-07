@@ -11,32 +11,33 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class WelcomeTest {
 
     WebDriver driver;
 
     // Browser setup before every test
-    @BeforeMethod
-    public void setUp() {
 
-        ChromeOptions options = new ChromeOptions();
+@BeforeMethod
+public void setUp() {
+    ChromeOptions options = new ChromeOptions();
 
-        // For local testing, browser will be visible.
-        // For GitHub Actions, enable headless mode.
-        // options.addArguments("--headless=new");
+    options.addArguments("--headless=new");
+    options.addArguments("--no-sandbox");
+    options.addArguments("--disable-dev-shm-usage");
+    options.addArguments("--window-size=1920,1080");
 
-        driver = new ChromeDriver(options);
+    driver = new ChromeDriver(options);
 
-        driver.manage().window().maximize();
+    String page = new File("webpage/welcome.html")
+            .getAbsoluteFile()
+            .toURI()
+            .toString();
 
-        String page = new File("webpage/welcome.html")
-                .getAbsoluteFile()
-                .toURI()
-                .toString();
+    driver.get(page);
+}
 
-        driver.get(page);
-    }
 
     // TC01: Verify page title
     @Test
