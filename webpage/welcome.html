@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome to DevOps</title>
+</head>
+
+<body>
+
+<div id="welcomeBox"
+     style="background-color: lightblue;
+            width: 350px;
+            height: 250px;
+            padding: 20px;">
+
+    <h2 id="heading">Welcome to DevOps</h2>
+
+    <input id="username"
+           type="text"
+           placeholder="Enter Username">
+
+    <br><br>
+
+    <input id="password"
+           type="password"
+           placeholder="Enter Password">
+
+    <br><br>
+
+    <button id="loginButton" onclick="login()">
+        Login
+    </button>
+
+    <h3 id="message"></h3>
+
+</div>
+
+<script>
+
+function login() {
+
+    var username =
+        document.getElementById("username").value;
+
+    var password =
+        document.getElementById("password").value;
+
+    if (username === "admin" && password === "admin123") {
+
+        document.getElementById("message").innerText =
+            "Welcome to DevOps! Login Successful";
+
+    } else {
+
+        document.getElementById("message").innerText =
+            "Invalid Username or Password";
+
+    }
+}
+
+</script>
+
+</body>
+</html>
